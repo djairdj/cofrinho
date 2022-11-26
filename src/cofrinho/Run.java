@@ -8,19 +8,13 @@ de moedas" em Java. Crie um menu em que é oferecido ao usuário:
  Calcular quanto dinheiro existe no cofrinho convertido para Real
  */
 public class Run {
-    public static void main(String[] args) {        
+    public static void main(String[] args) {
         Cofre cofrinho = new Cofre();
-        cofrinho.addMoeda();
-        cofrinho.addMoeda();
-        cofrinho.addMoeda();
-        cofrinho.setFloating(3);
+        cofrinho.addMoedas();
+        //cofrinho.setFloating(3);
+        cofrinho.listagemTotalAcumulado();
+        //System.out.println("\n" + cofrinho+"\n");
         // cofrinho.setCambioMoedas();
-        System.out.println("total acumulado Euro " + cofrinho.totalAcumulado(MoedaTipo.EURO));
-        System.out.println("total acumulado Dollar " + cofrinho.totalAcumulado(MoedaTipo.DOLLAR));
-        System.out.println("total acumulado Reais " + cofrinho.totalAcumulado(MoedaTipo.REAL));
-        System.out.println("valor de Euro " + cofrinho.valorAcumulado(MoedaTipo.EURO));
-        System.out.println("valor de Dollar " + cofrinho.valorAcumulado(MoedaTipo.DOLLAR));
-        System.out.println("valor de Reais " + cofrinho.valorAcumulado(MoedaTipo.REAL));
-        System.out.println("\n" + cofrinho);
+        //System.out.println("\n"+cofrinho);
     }
 }

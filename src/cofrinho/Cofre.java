@@ -1,5 +1,6 @@
 package cofrinho;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -45,7 +46,7 @@ public class Cofre {
      */
     public double valorAcumulado(MoedaTipo tipo) {
         double soma = 0;
-        for (Moeda moeda : moedas) {
+        for (Moeda moeda : this.moedas) {
             if (moeda.tipo == tipo) {
                 soma += moeda.valor;
             }
@@ -61,10 +62,21 @@ public class Cofre {
     public double totalAcumulado(MoedaTipo tipo) {
         double soma = 0;
         for (Moeda moeda : moedas) {
-            var cambiado = moeda.tipo.cambio() * moeda.valor;
+            double cambiado = moeda.tipo.cambio() * moeda.valor;
             soma += cambiado;
         }
         return roundTo(soma / tipo.cambio(), floating);
+    }
+
+    /**
+     * Exibe o total de moedas dentro do Cofre de forma que cada moeda
+     * é exibida com seu respectivo símbolo.
+     */
+    public void listagemTotalAcumulado(){
+        for (MoedaTipo m: this.moedaTipos){
+            NumberFormat dinheiro = NumberFormat.getCurrencyInstance(m.local()); 
+            System.out.println("Total acumulado "+ m+": "+dinheiro.format(this.totalAcumulado(m)));
+        }
     }
 
     /**
@@ -129,6 +141,10 @@ public class Cofre {
         }
     }
 
+    /**
+     * Método expressa a representação em String das informções do objeto.
+     * Esse método é uma sobrescrita do método que está na classe Object
+     */
     public String toString() {
         String r = "Estatísticas do cofre:\n";
         if (!this.moedas.isEmpty()) {
