@@ -1,5 +1,8 @@
 package cofrinho;
 
+/*
+ * Classe baseada no resultado da API: https://economia.awesomeapi.com.br/json/available
+ */
 public enum EnumCombinations {
   // region A
   ARS_BRL(EnumCoins.descriptionFromCombinations(EnumCoins.ARS, EnumCoins.BRL)),
@@ -510,7 +513,7 @@ public enum EnumCombinations {
   ZAR_BRL(EnumCoins.descriptionFromCombinations(EnumCoins.ZAR, EnumCoins.BRL)),
   ZAR_USD(EnumCoins.descriptionFromCombinations(EnumCoins.ZAR, EnumCoins.USD));
   //endregion
-  
+
   private final String description;
 
   EnumCombinations(String description) {
