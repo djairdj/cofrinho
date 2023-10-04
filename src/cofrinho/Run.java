@@ -1,4 +1,5 @@
 package cofrinho;
+
 /*
  * O trabalho consiste em implementar um pequeno sistema que emula um "Cofrinho 
 de moedas" em Java. Crie um menu em que é oferecido ao usuário:
@@ -7,14 +8,19 @@ de moedas" em Java. Crie um menu em que é oferecido ao usuário:
  Listar todas as moedas que estão dentro do cofrinho
  Calcular quanto dinheiro existe no cofrinho convertido para Real
  */
+/*
+TODO  [] Desmembrar a responsabilidade do valora taxa de câmbio da classe da moeda;
+        [] Criar um conversor para ser utilizado apenas na hora de checar os valores cambiados,
+        dessa forma o cálculo será atualizado em tempo "real";
+*/
 public class Run {
-    public static void main(String[] args) {
-        Cofre cofrinho = new Cofre();
-        cofrinho.addMoedas();
-        //cofrinho.setFloating(3);
-        cofrinho.listagemTotalAcumulado();
-        //System.out.println("\n" + cofrinho+"\n");
-        // cofrinho.setCambioMoedas();
-        //System.out.println("\n"+cofrinho);
-    }
+  public static void main(String[] args) {
+    Cofre cofrinho = new Cofre();
+    cofrinho.addMoedas();
+    //cofrinho.setFloating(3);
+    cofrinho.listagemTotalAcumulado();
+    //System.out.println("\n" + cofrinho+"\n");
+    // cofrinho.setCambioMoedas();
+    //System.out.println("\n"+cofrinho);
+  }
 }
