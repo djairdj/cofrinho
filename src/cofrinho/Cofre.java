@@ -17,13 +17,13 @@ public class Cofre {
    * possibilita que seja alterado esse valor.
    */
   public void setCambioMoedas() {
-    for(int i = 0; i < this.moedaTipos.length; i++) {
+    for (int i = 0; i < this.moedaTipos.length; i++) {
       MoedaTipo m = this.moedaTipos[i];
       try {
         System.out.println("Valor atual do câmbio para moeda " + m + ": " + m.cambio());
         System.out.print("Qual novo valor de cambio da moeda " + m + "? ");
         m.setCambio(Math.abs(Double.parseDouble(sc.nextLine())));
-      } catch(Exception e) {
+      } catch (Exception e) {
         System.out.println("Valor inválido");
         i--;
       }
@@ -46,8 +46,8 @@ public class Cofre {
    */
   public double valorAcumulado(MoedaTipo tipo) {
     double soma = 0;
-    for(Moeda moeda : this.moedas) {
-      if(moeda.tipo == tipo) {
+    for (Moeda moeda : this.moedas) {
+      if (moeda.tipo == tipo) {
         soma += moeda.valor;
       }
     }
@@ -61,7 +61,7 @@ public class Cofre {
    */
   public double totalAcumulado(MoedaTipo tipo) {
     double soma = 0;
-    for(Moeda moeda : moedas) {
+    for (Moeda moeda : moedas) {
       double cambiado = moeda.tipo.cambio() * moeda.valor;
       soma += cambiado;
     }
@@ -73,7 +73,7 @@ public class Cofre {
    * é exibida com seu respectivo símbolo.
    */
   public void listagemTotalAcumulado() {
-    for(MoedaTipo m : this.moedaTipos) {
+    for (MoedaTipo m : this.moedaTipos) {
       NumberFormat dinheiro = NumberFormat.getCurrencyInstance(m.local());
       System.out.println("Total acumulado " + m + ": " + dinheiro.format(this.totalAcumulado(m)));
     }
@@ -83,30 +83,30 @@ public class Cofre {
    * Método interage com usuário ao configurar uma moeda para adição ao cofre.
    */
   public void addMoeda() {
-    while(true) {
+    while (true) {
       System.out.print("Informe o valor da moeda: ");
       try {
         double inputValue = Double.parseDouble(sc.nextLine());
         MoedaTipo tipo = null;
         int opt = -1;
-        while(true) {
+        while (true) {
           System.out.println("Informe o número do tipo da moeda: ");
-          for(int i = 0; i < moedaTipos.length; i++) {
+          for (int i = 0; i < moedaTipos.length; i++) {
             System.out.println((i + 1) + " - " + moedaTipos[i]);
           }
           try {
             opt = Integer.parseInt(sc.nextLine()) - 1;
-          } catch(Exception e) {
+          } catch (Exception e) {
             System.out.println("Valor não é um número.");
           }
-          if(opt >= 0 && opt < moedaTipos.length) {
+          if (opt >= 0 && opt < moedaTipos.length) {
             tipo = moedaTipos[opt];
             break;
           }
         }
         addMoeda(new Moeda(inputValue, tipo));
         break;
-      } catch(Exception e) {
+      } catch (Exception e) {
         System.err.println("Valor informado não é um valor monetário.");
       }
     }
@@ -125,30 +125,30 @@ public class Cofre {
    * adicionadas uma a uma
    */
   public void addMoedas() {
-    while(true) {
+    while (true) {
       try {
         System.out.print("Quantas moedas vais adicionar ao cofre dessa vêz? ");
         int nVezes = Math.abs(Integer.parseInt(sc.nextLine()));
-        for(int i = 1; i <= nVezes; i++) {
+        for (int i = 1; i <= nVezes; i++) {
           System.out.println("Moeda " + i + ":");
           addMoeda();
         }
         break;
-      } catch(Exception e) {
+      } catch (Exception e) {
         System.out.println("Informe um número!");
       }
     }
   }
 
   /**
-   * Método expressa a representação em String das informções do objeto.
+   * Método expressa a representação em String das informações do objeto.
    * Esse método é uma sobrescrita do método que está na classe Object
    */
   public String toString() {
     String r = "Estatísticas do cofre:\n";
-    if(!this.moedas.isEmpty()) {
+    if (!this.moedas.isEmpty()) {
       r += "Moedas:\n";
-      for(int i = 0; i < moedas.size(); i++) {
+      for (int i = 0; i < moedas.size(); i++) {
         r += String.format("%s\n", i + 1 + "ª " + this.moedas.get(i));
       }
     }
